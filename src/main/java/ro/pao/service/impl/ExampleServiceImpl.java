@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @Getter
 public class ExampleServiceImpl implements ExampleService {
 
-
     private static List<ExampleClass> eggList = new ArrayList<>();
     // private static Map<UUID, ExampleClass> exampleClassHashMap = new HashMap<>();
 

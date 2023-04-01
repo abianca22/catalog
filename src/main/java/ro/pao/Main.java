@@ -4,6 +4,8 @@ import ro.pao.application.Menu;
 import ro.pao.model.*;
 import ro.pao.model.enums.MaterieObligatorie;
 import ro.pao.model.enums.MaterieOptionala;
+import ro.pao.service.ScoalaService;
+import ro.pao.service.impl.ScoalaServiceImpl;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -22,8 +24,6 @@ public class Main {
                 break;
             }
         }*/
-
-
 
 
     }

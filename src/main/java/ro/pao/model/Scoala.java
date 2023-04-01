@@ -10,6 +10,7 @@ import java.util.ArrayList;
 @SuperBuilder
 @AllArgsConstructor
 @EqualsAndHashCode
+@ToString
 public class Scoala {
     private String denumire;
     private ArrayList<Profesor> profesori;
