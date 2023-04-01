@@ -2,10 +2,13 @@ package ro.pao;
 
 import ro.pao.application.Menu;
 import ro.pao.model.*;
+import ro.pao.model.enums.Invatare;
 import ro.pao.model.enums.MaterieObligatorie;
 import ro.pao.model.enums.MaterieOptionala;
 import ro.pao.service.ScoalaService;
+import ro.pao.service.SemestruService;
 import ro.pao.service.impl.ScoalaServiceImpl;
+import ro.pao.service.impl.SemestruServiceImpl;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -13,7 +16,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-/*        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             Menu menu = Menu.getInstance();
@@ -23,7 +26,29 @@ public class Main {
             if ("exit".equals(scanner.next())) {
                 break;
             }
-        }*/
+        }
+
+/*
+        Catalog catalog = new Catalog();
+        Map<UUID, Elev> elevi = new HashMap<>();
+        Elev elev = Elev.builder()
+                .nume("Andrei")
+                .prenume("Bianca")
+                .cnp("")
+                .adresa(new Adresa())
+                .stilInvatare(Invatare.PRACTIC)
+                .nrMatricol(UUID.randomUUID())
+                .build();
+        ArrayList<MaterieObligatorie> materii = new ArrayList<>();
+        materii.add(MaterieObligatorie.MATE);
+        catalog.setMateriiObligatorii(materii);
+        SemestruService semestruService = new SemestruServiceImpl();
+        semestruService.adaugaElev(catalog, elev);
+        System.out.println(catalog.getElevi());
+        System.out.println(catalog.getMateriiObligatorii());
+        semestruService.adaugaNotaObl(catalog, 1, MaterieObligatorie.MATE, new Nota(10, LocalDate.now()), elev);
+        System.out.println(catalog.getSemestru1().getSituatieObligatorii());
+*/
 
 
     }
