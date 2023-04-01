@@ -24,15 +24,7 @@ public class Main {
         }*/
 
 
-//        ArrayList<MaterieObligatorie> discipline = new ArrayList<MaterieObligatorie>();
-//        discipline.add(MaterieObligatorie.DIRIGENTIE);
 
-/*        Profesor prof = Profesor.builder()
-                .nume("Cutarescu")
-                .prenume("Cutarita")
-                .cnp("0123456789012")
-                .dataNastere(LocalDate.of(2023, 4, 1))
-                .build();*/
 
     }
 
