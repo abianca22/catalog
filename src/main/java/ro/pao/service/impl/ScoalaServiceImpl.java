@@ -8,6 +8,7 @@ import ro.pao.model.Scoala;
 import ro.pao.service.ScoalaService;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -61,5 +62,13 @@ public class ScoalaServiceImpl implements ScoalaService {
     public void modificaScoala(Scoala deModificat, Scoala inlocuitoare){
         stergeScoala(deModificat);
         adaugaScoala(inlocuitoare);
+    }
+
+    @Override
+    public void sorteazaNume(){
+        Comparator<Scoala> comparator = (Scoala s1, Scoala s2) -> s1.getDenumire().compareTo(s2.getDenumire());
+        listaScoli = listaScoli.stream()
+                .sorted(comparator)
+                .toList();
     }
 }

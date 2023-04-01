@@ -21,4 +21,6 @@ public interface ScoalaService {
     public void stergeScoala(Scoala scoala);
 
     public void modificaScoala(Scoala deModificat, Scoala inlocuitoare);
+
+    public void sorteazaNume();
 }
