@@ -24,6 +24,8 @@ public class Menu {
         return (INSTANCE == null ? new Menu() : INSTANCE);
     }
 
+    private Menu() {}
+
     public void intro() {
         String intro = """
                 Intro example

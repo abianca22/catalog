@@ -17,7 +17,6 @@ public abstract class AbstractEntity {
 
     private UUID id;
 
-
     private LocalDate creationDate;
 
     private LocalDate updateDate;
