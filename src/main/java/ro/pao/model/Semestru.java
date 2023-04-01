@@ -8,6 +8,7 @@ import ro.pao.model.enums.MaterieOptionala;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -18,7 +19,7 @@ import java.util.TreeMap;
 @ToString
 @SuperBuilder
 public class Semestru {
-    private Double medieSemestriala;
+    private Map<Elev, Double> medieSemestriala;
 
     private Map<Elev, Map<MaterieObligatorie, ArrayList<Nota>>> situatieObligatorii;
     private Map<Elev, Map<MaterieOptionala, ArrayList<Nota>>> situatieOptionale;
@@ -27,7 +28,7 @@ public class Semestru {
     private Map<Elev, Map<MaterieObligatorie, Integer>> teze;
 
     public Semestru(){
-        medieSemestriala = 0d;
+        medieSemestriala = new HashMap<>();
         situatieObligatorii = new TreeMap<>();
         situatieOptionale = new TreeMap<>();
         absenteObligatorii = new TreeMap<>();
