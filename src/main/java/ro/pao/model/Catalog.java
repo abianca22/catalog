@@ -2,9 +2,10 @@ package ro.pao.model;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import ro.pao.model.enums.MaterieObligatorie;
+import ro.pao.model.enums.MaterieOptionala;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
 
 @Setter
 @Getter
@@ -18,17 +19,22 @@ public class Catalog {
     private Character literaClasa;
     private Semestru semestru1;
     private Semestru semestru2;
-    private Double medieAnuala;
     private ArrayList<Profesor> profesoriClasa;
+    private Map<UUID, Elev> elevi;
+    private ArrayList<MaterieObligatorie> materiiObligatorii;
+    private ArrayList<MaterieOptionala> materiiOptionale;
+    private HashMap<Elev, Double> mediiAnuale;
     private Optional<String> profil;
-    private ArrayList<Elev> elevi;
+
 
     public Catalog(){
         this.scoala = new Scoala();
         this.semestru1 = new Semestru();
         this.semestru2 = new Semestru();
-        this.medieAnuala = 0d;
+        this.materiiObligatorii = new ArrayList<>();
+        this.materiiOptionale = new ArrayList<>();
         this.profesoriClasa = new ArrayList<>();
+        this.elevi = new HashMap<>();
     }
 
 }
