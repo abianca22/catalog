@@ -175,17 +175,34 @@ public class Menu {
         semestruService.adaugaElev(catalog, elev);
         System.out.println("Elevi: " + catalog.getElevi() + "\n\n");
         System.out.println("Situatie elevi primul semestru: " + catalog.getSemestru1().getSituatieObligatorii() + "\n\n");
-        System.out.println("Punem elevului adaugat nota 10 la Matematica pe primul semestru");
+
+        System.out.println("Punem elevului/elevei adaugat nota 10 la Matematica pe primul semestru");
         semestruService.adaugaNotaObl(catalog, 1, MaterieObligatorie.MATE, new Nota(10, LocalDate.now()), elev);
         System.out.println("Nota elevului " + elev.getNume() + " " + elev.getPrenume() + " este " + catalog.getSemestru1()
                 .getSituatieObligatorii()
                 .get(elev)
                 .get(MaterieObligatorie.MATE)
                 .get(0) + "\n\n");
+
+        ArrayList<LocalDate> absente = new ArrayList<>();
+        absente.add(LocalDate.now());
+        absente.add(LocalDate.of(2023, 3, 30));
+        Map<MaterieObligatorie, ArrayList<LocalDate>> absenteMaterii = new TreeMap<>();
+        absenteMaterii.put(MaterieObligatorie.MATE, absente);
+
+        System.out.println("Adaugam doua absente la matematica acestui elev");
+        catalog.getSemestru1().getAbsenteObligatorii().get(elev).put(MaterieObligatorie.MATE, absente);
+        System.out.println("Absentele elevilui/elevei la matematica pe primul semestru sunt: " + catalog.getSemestru1()
+                .getAbsenteObligatorii()
+                .get(elev)
+                .put(MaterieObligatorie.MATE, absente) + "\n\n");
+        System.out.println("Numarul absentelor de pe primul semestru al elevului/elevei este: " +
+                semestruService.numaraAbsente(catalog.getSemestru1()).get(elev) + "\n\n");
+
         System.out.println("Stergem elevul din catalog");
         semestruService.stergeElev(catalog, elev);
         System.out.println("Elevii din catalog dupa stergere: " + catalog.getElevi() + "\n\n");
-        System.out.println("Situatia scoalara a eleviloe de pe primul semestru dupa stergere: " + catalog.getSemestru1().getSituatieObligatorii() + "\n\n");
+        System.out.println("Situatia scoalara a elevilor de pe primul semestru dupa stergere: " + catalog.getSemestru1().getSituatieObligatorii() + "\n\n");
 
 
 
