@@ -1,4 +1,4 @@
-Aplicatie contine clasa abstracta Persoana, enum-urile MaterieObligatorie (denumire si numar de ore pe saptamana), MaterieOptionala (denumire si numar de ore pe saptamana)
+Aplicatia contine clasa abstracta Persoana, enum-urile MaterieObligatorie (denumire si numar de ore pe saptamana), MaterieOptionala (denumire si numar de ore pe saptamana)
 si Invatare (stilurile de invatare ale elevilor - auditiv, vizual, practic sau niciunul) si clasele Adresa (detaliile unei adrese), Elev (atributele mostenite de la
 Persoana si detalii specifice elevului, precum stil de invatare, numar matricol, adresa ce apare in catalog) si Profesor (atributele mostenite de la Persoana si detalii
 specifice unui profesor, precum disciplinele pe care le preda), Scoala (cu atribute precum denumire, lista profesori, adresa), Semestru (colectii in care stocam situatia
