@@ -1,0 +1,21 @@
+
+]	java:S125 "<This block of commented-out lines of code should be removed.(Á‹¶ÿÿÿÿÿ8ÙÄ÷ó0
+K
+java:S1128")Remove this unused import 'ro.pao.model'.(ĞÉ›·ÿÿÿÿÿ8ÜÄ÷ó0
+Z
+java:S1128"8Remove this unused import 'ro.pao.model.enums.Invatare'.(ù·´µùÿÿÿÿ8İÄ÷ó0
+d
+java:S1128"BRemove this unused import 'ro.pao.model.enums.MaterieObligatorie'.(ÊÏéÿÿÿÿÿ8İÄ÷ó0
+\
+java:S1128"@Remove this unused import 'ro.pao.model.enums.MaterieOptionala'.(·‚Æj8İÄ÷ó0
+V
+java:S1128"9Remove this unused import 'ro.pao.service.ScoalaService'.(ùÀ©²8ŞÄ÷ó0
+]
+java:S1128	";Remove this unused import 'ro.pao.service.SemestruService'.(ÿŒæõşÿÿÿÿ8ŞÄ÷ó0
+d
+java:S1128
+"BRemove this unused import 'ro.pao.service.impl.ScoalaServiceImpl'.(àÓâ–ıÿÿÿÿ8ŞÄ÷ó0
+f
+java:S1128"DRemove this unused import 'ro.pao.service.impl.SemestruServiceImpl'.(ƒ€À°şÿÿÿÿ8ßÄ÷ó0
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8ßÄ÷ó0

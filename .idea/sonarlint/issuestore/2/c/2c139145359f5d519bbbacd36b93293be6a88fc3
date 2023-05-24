@@ -1,0 +1,35 @@
+
+o
+java:S2293r"YReplace the type specification in this constructor call with the diamond operator ("<>").(—§—ø
+a
+java:S11923"FDefine a constant instead of duplicating this literal "Arges" 5 times.(æ¸Çèùÿÿÿÿ
+c
+java:S11923"HDefine a constant instead of duplicating this literal "Pitesti" 5 times.(æ¸Çèùÿÿÿÿ
+i
+java:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãàµ
+N	java:S106,"9Replace this use of System.out or System.err by a logger.(•ÍÂ
+N	java:S106y"9Replace this use of System.out or System.err by a logger.(ç‡‚Ğ
+T	java:S106–"9Replace this use of System.out or System.err by a logger.(ŠÄìÓÿÿÿÿÿ
+O	java:S106˜"9Replace this use of System.out or System.err by a logger.(±¢»ë
+T	java:S106™"9Replace this use of System.out or System.err by a logger.(ƒ®ş©üÿÿÿÿ
+O	java:S106›"9Replace this use of System.out or System.err by a logger.(®‹¹
+T	java:S106œ"9Replace this use of System.out or System.err by a logger.(ƒ®ş©üÿÿÿÿ
+O	java:S106 "9Replace this use of System.out or System.err by a logger.(å©
+T	java:S106¢"9Replace this use of System.out or System.err by a logger.(°£Ò°ùÿÿÿÿ
+T	java:S106¤"9Replace this use of System.out or System.err by a logger.(ƒ®ş©üÿÿÿÿ
+T	java:S106¦"9Replace this use of System.out or System.err by a logger.(­Ô«ëùÿÿÿÿ
+T	java:S106©"9Replace this use of System.out or System.err by a logger.(Ğå—şúÿÿÿÿ
+N	java:S106¬"9Replace this use of System.out or System.err by a logger.(ª¸×d
+O	java:S106®"9Replace this use of System.out or System.err by a logger.(Š©¤¤
+O	java:S106°"9Replace this use of System.out or System.err by a logger.(Ó€Ó»
+N	java:S106±"9Replace this use of System.out or System.err by a logger.(§Ó`
+T	java:S106³"9Replace this use of System.out or System.err by a logger.(ï›‡’ÿÿÿÿÿ
+N	java:S106µ"9Replace this use of System.out or System.err by a logger.(‡ı-
+T	java:S106Á"9Replace this use of System.out or System.err by a logger.(Î¸…şÿÿÿÿ
+T	java:S106Ã"9Replace this use of System.out or System.err by a logger.(µÛä¾ûÿÿÿÿ
+T	java:S106Ç"9Replace this use of System.out or System.err by a logger.(Êˆªøÿÿÿÿ
+O	java:S106Ê"9Replace this use of System.out or System.err by a logger.(ÁóØ
+T	java:S106Ì"9Replace this use of System.out or System.err by a logger.(Ñßùùÿÿÿÿ
+O	java:S106Í"9Replace this use of System.out or System.err by a logger.(ğÃ„÷
+M
+java:S1068"2Remove this unused "exampleService" private field.(Ï‚¢Îıÿÿÿÿ
