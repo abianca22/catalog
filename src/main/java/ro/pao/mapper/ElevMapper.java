@@ -1,5 +1,6 @@
 package ro.pao.mapper;
 
+import ro.pao.model.Adresa;
 import ro.pao.model.Elev;
 import ro.pao.model.ExampleClass;
 import ro.pao.model.enums.EnumExample;
@@ -21,7 +22,8 @@ public class ElevMapper {
         return INSTANCE;
     }
 
-    public Optional<Elev> mapToElev(ResultSet resultSet) throws SQLException{
+
+    public Optional<Elev> mapToElev(ResultSet resultSet, Adresa adresa) throws SQLException{
         if (resultSet.next()) {
             return Optional.of(
                     Elev.builder()
@@ -30,6 +32,7 @@ public class ElevMapper {
                             .prenume(resultSet.getString(3))
                             .cnp(resultSet.getString((4)))
                             .dataNastere(resultSet.getDate(5).toLocalDate())
+                            .adresa(adresa)
                             .build()
             );
         }
@@ -37,7 +40,7 @@ public class ElevMapper {
             return Optional.empty();
         }
     }
-    public List<Elev> mapToElevList(ResultSet resultSet) throws SQLException {
+    public List<Elev> mapToElevList(ResultSet resultSet, Adresa adresa) throws SQLException {
         List<Elev> listaElevi = new ArrayList<>();
         while (resultSet.next()) {
             listaElevi.add(
@@ -47,6 +50,7 @@ public class ElevMapper {
                             .prenume(resultSet.getString(3))
                             .cnp(resultSet.getString(4))
                             .dataNastere(resultSet.getDate(5).toLocalDate())
+                            .adresa(adresa)
                             .build()
             );
         }
