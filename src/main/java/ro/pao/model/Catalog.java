@@ -14,6 +14,8 @@ import java.util.*;
 @EqualsAndHashCode
 @ToString
 public class Catalog {
+
+    private UUID id;
     private Scoala scoala;
     private Integer clasa;
     private Character literaClasa;

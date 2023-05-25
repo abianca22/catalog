@@ -7,10 +7,7 @@ import ro.pao.model.enums.MaterieOptionala;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @Setter
 @Getter
@@ -19,6 +16,8 @@ import java.util.TreeMap;
 @ToString
 @SuperBuilder
 public class Semestru {
+
+    private UUID id;
     private Map<Elev, Double> medieSemestriala;
 
     private Map<Elev, Map<MaterieObligatorie, ArrayList<Nota>>> situatieObligatorii;

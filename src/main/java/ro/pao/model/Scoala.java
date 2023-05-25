@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @Setter
 @Getter
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 @EqualsAndHashCode
 @ToString
 public class Scoala {
+    private UUID id;
     private String denumire;
     private ArrayList<Profesor> profesori;
     private Adresa adresa;

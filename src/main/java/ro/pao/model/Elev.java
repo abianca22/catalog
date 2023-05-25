@@ -11,6 +11,7 @@ import java.util.UUID;
 
 
 @Getter
+@Setter
 @SuperBuilder
 @ToString
 @AllArgsConstructor
@@ -18,10 +19,8 @@ import java.util.UUID;
 public class Elev extends Persoana implements Comparable<Elev>{
     private UUID nrMatricol;
 
-    @Setter
     private Invatare stilInvatare;
 
-    @Setter
     private Adresa adresa;
 
     @Override

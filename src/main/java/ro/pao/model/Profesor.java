@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Getter
@@ -18,6 +19,8 @@ import java.util.Optional;
 @SuperBuilder
 @AllArgsConstructor
 public class Profesor extends Persoana {
+
+        private UUID id;
         private ArrayList<MaterieObligatorie> disciplineObligatorii;
         private ArrayList<MaterieOptionala> disciplineOptionale;
         private Optional<String> facultate;
@@ -25,6 +28,7 @@ public class Profesor extends Persoana {
 
         Profesor(){
                 super();
+                id = UUID.randomUUID();
                 disciplineObligatorii = new ArrayList<MaterieObligatorie>();
                 disciplineOptionale = new ArrayList<MaterieOptionala>();
         }
