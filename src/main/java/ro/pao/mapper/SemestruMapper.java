@@ -15,6 +15,10 @@ public class SemestruMapper {
     private SemestruMapper(){
     }
 
+    public static SemestruMapper getInstance() {
+        return INSTANCE;
+    }
+
     public Optional<Semestru> mapToSemetru (ResultSet resultSet) throws SQLException{
         if(resultSet.next()){
             return Optional.of(
