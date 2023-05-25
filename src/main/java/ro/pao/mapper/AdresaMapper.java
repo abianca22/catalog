@@ -16,6 +16,10 @@ public class AdresaMapper {
     private AdresaMapper(){
     }
 
+    public static AdresaMapper getInstance() {
+        return INSTANCE;
+    }
+
     public Optional<Adresa> mapToAdresa (ResultSet resultSet) throws SQLException {
         if (resultSet.next()){
             return Optional.of(
