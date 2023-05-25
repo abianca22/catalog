@@ -1,6 +1,7 @@
 package ro.pao.mapper;
 
 import ro.pao.model.Catalog;
+import ro.pao.model.Semestru;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,13 +16,15 @@ public class CatalogMapper {
     private CatalogMapper(){
     }
 
-    public Optional<Catalog> mapToCatalog (ResultSet resultSet) throws SQLException{
+    public Optional<Catalog> mapToCatalog (ResultSet resultSet, Semestru semestru1, Semestru semestru2) throws SQLException{
         if (resultSet.next()) {
             return Optional.of(
                     Catalog.builder()
                             .id(UUID.fromString(resultSet.getString(1)))
                             .clasa(resultSet.getInt(2))
                             .literaClasa(resultSet.getString(3).charAt(0))
+                            .semestru1(semestru1)
+                            .semestru2(semestru2)
                             .build()
             );
         }
@@ -30,7 +33,7 @@ public class CatalogMapper {
         }
     }
 
-    public List<Catalog> mapToCatalogList (ResultSet resultSet) throws SQLException{
+    public List<Catalog> mapToCatalogList (ResultSet resultSet, Semestru semestru1, Semestru semestru2) throws SQLException{
         List<Catalog> listaCataloage = new ArrayList<>();
         while (resultSet.next()) {
            listaCataloage.add(
@@ -38,6 +41,8 @@ public class CatalogMapper {
                             .id(UUID.fromString(resultSet.getString(1)))
                             .clasa(resultSet.getInt(2))
                             .literaClasa(resultSet.getString(3).charAt(0))
+                            .semestru1(semestru1)
+                            .semestru2(semestru2)
                             .build()
             );
         }
