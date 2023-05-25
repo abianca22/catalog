@@ -16,6 +16,10 @@ public class CatalogMapper {
     private CatalogMapper(){
     }
 
+    public static CatalogMapper getInstance() {
+        return INSTANCE;
+    }
+
     public Optional<Catalog> mapToCatalog (ResultSet resultSet, Semestru semestru1, Semestru semestru2) throws SQLException{
         if (resultSet.next()) {
             return Optional.of(
