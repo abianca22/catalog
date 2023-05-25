@@ -15,6 +15,10 @@ public class ProfesorMapper {
     private ProfesorMapper(){
     }
 
+    public static ProfesorMapper getInstance(){
+        return INSTANCE;
+    }
+
     public Optional<Profesor> mapToProfesor (ResultSet resultSet) throws SQLException{
         if (resultSet.next()){
             return Optional.of(
