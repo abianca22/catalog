@@ -21,21 +21,20 @@ public class Catalog {
     private Character literaClasa;
     private Semestru semestru1;
     private Semestru semestru2;
-    private ArrayList<Profesor> profesoriClasa;
+    //private ArrayList<Profesor> profesoriClasa;
     private Map<UUID, Elev> elevi;
-    private ArrayList<MaterieObligatorie> materiiObligatorii;
-    private ArrayList<MaterieOptionala> materiiOptionale;
-    private HashMap<Elev, Double> mediiAnuale;
-    private Optional<String> profil;
+    //private ArrayList<MaterieObligatorie> materiiObligatorii;
+    //private ArrayList<MaterieOptionala> materiiOptionale;
+    // private HashMap<Elev, Double> mediiAnuale;
+    //private Optional<String> profil;
 
 
     public Catalog(){
         this.scoala = new Scoala();
         this.semestru1 = new Semestru();
         this.semestru2 = new Semestru();
-        this.materiiObligatorii = new ArrayList<>();
-        this.materiiOptionale = new ArrayList<>();
-        this.profesoriClasa = new ArrayList<>();
+       // this.materiiObligatorii = new ArrayList<>();
+       // this.materiiOptionale = new ArrayList<>();
         this.elevi = new HashMap<>();
     }
 
