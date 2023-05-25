@@ -15,11 +15,9 @@ import java.util.UUID;
 public class Scoala {
     private UUID id;
     private String denumire;
-    private ArrayList<Profesor> profesori;
     private Adresa adresa;
 
     public Scoala(){
-        profesori = new ArrayList<Profesor>();
         adresa = new Adresa();
     }
 }

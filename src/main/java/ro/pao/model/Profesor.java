@@ -21,16 +21,10 @@ import java.util.UUID;
 public class Profesor extends Persoana {
 
         private UUID id;
-        private ArrayList<MaterieObligatorie> disciplineObligatorii;
-        private ArrayList<MaterieOptionala> disciplineOptionale;
-        private Optional<String> facultate;
-
 
         Profesor(){
                 super();
-                id = UUID.randomUUID();
-                disciplineObligatorii = new ArrayList<MaterieObligatorie>();
-                disciplineOptionale = new ArrayList<MaterieOptionala>();
+                this.id = UUID.randomUUID();
         }
 
 }

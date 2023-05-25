@@ -2,6 +2,8 @@ package ro.pao.model.enums;
 
 import lombok.Setter;
 
+import java.util.UUID;
+
 public enum MaterieObligatorie {
 
     MATE(4, "Matematica"),
@@ -17,9 +19,11 @@ public enum MaterieObligatorie {
     SPORT(1, "Educatie fizica si sport");
 
 
+
     private Integer nrOre;
     private final String denumire;
     MaterieObligatorie(Integer ore, String nume){
+
         this.nrOre = ore;
         this.denumire = nume;
     }
@@ -30,7 +34,6 @@ public enum MaterieObligatorie {
     public String getDenumire(){
         return this.denumire;
     }
-
     public void setNrOre(Integer ore){
         this.nrOre = ore;
     }
