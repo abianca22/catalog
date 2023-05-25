@@ -20,18 +20,14 @@ public class Semestru {
     private UUID id;
     private Map<Elev, Double> medieSemestriala;
 
-    private Map<Elev, Map<MaterieObligatorie, ArrayList<Nota>>> situatieObligatorii;
-    private Map<Elev, Map<MaterieOptionala, ArrayList<Nota>>> situatieOptionale;
-    private Map<Elev, Map<MaterieObligatorie, ArrayList<LocalDate>>> absenteObligatorii;
-    private Map<Elev, Map<MaterieOptionala, ArrayList<LocalDate>>> absenteOptionale;
-    private Map<Elev, Map<MaterieObligatorie, Integer>> teze;
+//    private Map<Elev, Map<MaterieObligatorie, ArrayList<Nota>>> situatieObligatorii;
+//    private Map<Elev, Map<MaterieOptionala, ArrayList<Nota>>> situatieOptionale;
+//    private Map<Elev, Map<MaterieObligatorie, ArrayList<LocalDate>>> absenteObligatorii;
+//    private Map<Elev, Map<MaterieOptionala, ArrayList<LocalDate>>> absenteOptionale;
+//    private Map<Elev, Map<MaterieObligatorie, Integer>> teze;
 
     public Semestru(){
-        medieSemestriala = new HashMap<>();
-        situatieObligatorii = new TreeMap<>();
-        situatieOptionale = new TreeMap<>();
-        absenteObligatorii = new TreeMap<>();
-        absenteOptionale = new TreeMap<>();
-        teze = new TreeMap<>();
+        this.medieSemestriala = new HashMap<>();
     }
+
 }

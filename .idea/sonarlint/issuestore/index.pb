@@ -15,8 +15,6 @@ _
 /src/main/java/ro/pao/service/ScoalaService.java,8\f\8f3726350b505563b12827126adc2828fdfda105
 h
 8src/main/java/ro/pao/service/impl/ScoalaServiceImpl.java,0\2\020d06ae937b1c0f1ae473a217de72f2bb41776b
-\
-,src/main/java/ro/pao/model/ExampleClass.java,4\8\4833f9e88439a9c8dc980d8e5d4d1a37cf9e686b
 w
 G.idea/sonarlint/issuestore/f/6/f66168e6b0159e6be80118dc735af45af20970a1,f\f\ff6c80a753c63be8de7c4b4f557663bdd02ee1d5
 w
@@ -41,8 +39,6 @@ c
 3src/main/java/ro/pao/application/csv/CsvWriter.java,6\0\604de4a43146fd8cf118eb053e9ff7c77e79db87
 p
 @src/main/java/ro/pao/exceptions/CustomFileNotFoundException.java,6\0\60bd3aab8bda0c375be155f8570f44b82a4234a0
-c
-3src/main/java/ro/pao/mapper/ExampleClassMapper.java,c\3\c3692a8b785373e85cc464de029bc9c673318401
 f
 6src/main/java/ro/pao/repository/ExampleRepository.java,c\c\cc609c73bd43d38ea5a66d37e9c2f03d69221a68
 o
@@ -61,5 +57,3 @@ k
 ;src/main/java/ro/pao/service/impl/ThreadingServiceImpl.java,b\4\b402e43857092d63d7e05c99ab2b9101033b5c88
 f
 6src/main/java/ro/pao/config/DatabaseConfiguration.java,a\f\afbc55504aab476264d02b051e3ad730a1f60f9c
-T
-$src/main/java/ro/pao/model/Nota.java,a\0\a02b487f0f2b5e0e87633c6675624c89bc644fc4
