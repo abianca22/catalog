@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AdresaRepository {
-    Optional<ExampleClass> getAdresaById(UUID id);
+    Optional<Adresa> getAdresaById(UUID id);
 
     void deleteAdresaById(UUID id);
 
