@@ -4,11 +4,11 @@ import ro.pao.model.*;
 import ro.pao.model.enums.Invatare;
 import ro.pao.model.enums.MaterieObligatorie;
 import ro.pao.service.ExampleService;
-import ro.pao.service.ScoalaService;
-import ro.pao.service.SemestruService;
+//import ro.pao.service.ScoalaService;
+//import ro.pao.service.SemestruService;
 import ro.pao.service.impl.ExampleServiceImpl;
-import ro.pao.service.impl.ScoalaServiceImpl;
-import ro.pao.service.impl.SemestruServiceImpl;
+//import ro.pao.service.impl.ScoalaServiceImpl;
+//import ro.pao.service.impl.SemestruServiceImpl;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
@@ -26,9 +26,9 @@ public class Menu {
 
     //private final ExampleService exampleService = new ExampleServiceImpl();
 
-    private final ScoalaService scoalaService = new ScoalaServiceImpl();
+  //  private final ScoalaService scoalaService = new ScoalaServiceImpl();
 
-    private final SemestruService semestruService = new SemestruServiceImpl();
+   // private final SemestruService semestruService = new SemestruServiceImpl();
 
     public static Menu getInstance() {
         return (INSTANCE == null ? new Menu() : INSTANCE);

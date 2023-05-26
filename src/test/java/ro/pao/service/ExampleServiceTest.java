@@ -1,13 +1,18 @@
 package ro.pao.service;
 
 import org.junit.jupiter.api.Test;
-import ro.pao.application.Menu;
 import ro.pao.model.ExampleClass;
+import ro.pao.repository.ExampleRepository;
+import ro.pao.repository.impl.ExampleRepositoryImpl;
 import ro.pao.service.impl.ExampleServiceImpl;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Metodele de test ale serviciului 'ExampleService'
@@ -20,8 +25,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ExampleServiceTest {
 
-    private final Menu menu = Menu.getInstance();
-    private final ExampleService eggService = new ExampleServiceImpl();
 
     /**
      * Dupa cum puteti vedea, metoda are 'o conventie'
@@ -39,13 +42,20 @@ class ExampleServiceTest {
         ExampleClass exampleClass = ExampleClass.builder()
                 .id(UUID.randomUUID())
                 .build();
+        ExampleRepository exampleRepository = mock(ExampleRepositoryImpl.class);
 
-        eggService.addOnlyOne(exampleClass);
+        // when
+        when(exampleRepository.getObjectById(any())).thenReturn(Optional.of(exampleClass));
+
+        //mockExampleClassMapper(resultSet);
 
         // then
         // pasul in care testam comportamentul dupa apelarea functiilor
         // verifica daca cei doi parametri sunt egali, primul parametru fiind cel 'expected' si al doilea 'actual'
-        assertEquals(1, eggService.getAllFromList().size());
+
+        ExampleService exampleService = new ExampleServiceImpl(exampleRepository);
+
+        assertEquals(Optional.of(exampleClass), exampleService.getById(any()));
 
         // assertEquals face parte din clasa Assertions si este o metoda statica
         // alte metode mai sunt:

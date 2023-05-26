@@ -1,8 +1,6 @@
 
 7
 LICENSE,0\3\0398ccd0f49298b10a3d76a47800d2ebecd49859
-d
-4src/test/java/ro/pao/service/ExampleServiceTest.java,f\6\f66168e6b0159e6be80118dc735af45af20970a1
 a
 1src/main/java/ro/pao/model/enums/EnumExample.java,8\7\87401e7e48faba53f9839dc5ce19d16c970fb21d
 h
@@ -31,8 +29,6 @@ c
 3src/main/java/ro/pao/application/csv/CsvWriter.java,6\0\604de4a43146fd8cf118eb053e9ff7c77e79db87
 p
 @src/main/java/ro/pao/exceptions/CustomFileNotFoundException.java,6\0\60bd3aab8bda0c375be155f8570f44b82a4234a0
-`
-0src/main/java/ro/pao/service/ExampleService.java,7\c\7ca7a5b569bbb5bf003927d44100317ae51ec009
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 f
@@ -55,8 +51,6 @@ h
 8src/main/java/ro/pao/model/enums/MaterieObligatorie.java,7\1\714ef76d3dadafe0c13b0fc51611558fd1d702db
 f
 6src/main/java/ro/pao/model/enums/MaterieOptionala.java,0\5\05e8c740e206b518fe67c60dbfe5fbce86faae0b
-Z
-*src/main/java/ro/pao/application/Menu.java,2\c\2c139145359f5d519bbbacd36b93293be6a88fc3
 X
 (src/main/java/ro/pao/model/Profesor.java,c\b\cbc73d26abaab3a17b0fa57dd19dab1018eda718
 V
@@ -65,16 +59,6 @@ V
 ,src/main/java/ro/pao/model/ExampleClass.java,4\8\4833f9e88439a9c8dc980d8e5d4d1a37cf9e686b
 T
 $src/main/java/ro/pao/model/Nota.java,a\0\a02b487f0f2b5e0e87633c6675624c89bc644fc4
-i
-9src/main/java/ro/pao/service/impl/ExampleServiceImpl.java,8\c\8c11a6ff9b01e5b3587ab6ac9cf2d16322562d17
-h
-8src/main/java/ro/pao/service/impl/ScoalaServiceImpl.java,0\2\020d06ae937b1c0f1ae473a217de72f2bb41776b
-_
-/src/main/java/ro/pao/service/ScoalaService.java,8\f\8f3726350b505563b12827126adc2828fdfda105
-a
-1src/main/java/ro/pao/service/SemestruService.java,4\6\465eccd9d5d3221c8b95b8114b95cd46204173d1
-j
-:src/main/java/ro/pao/service/impl/SemestruServiceImpl.java,9\f\9ff35a6973279114313c877cdd2a7331331507c8
 W
 'src/main/java/ro/pao/model/Catalog.java,e\0\e0cec0c2c3ffb8f44e863d6350e8f76412933866
 ^
@@ -91,3 +75,13 @@ n
 >src/main/java/ro/pao/repository/impl/AdresaRepositoryImpl.java,3\7\3774a08987e3e53d4a90d700088479bf4a60aedb
 o
 ?src/main/java/ro/pao/repository/impl/ExampleRepositoryImpl.java,c\9\c91a071e4b0af6f1031e9b1eac7e5ac24d97ee01
+f
+6src/main/java/ro/pao/repository/ExampleRepository.java,c\c\cc609c73bd43d38ea5a66d37e9c2f03d69221a68
+[
++src/main/java/ro/pao/mapper/ElevMapper.java,a\4\a486b9f26e2921a837c73b6b0a5e8f83ee227751
+g
+7src/main/java/ro/pao/repository/SemestruRepository.java,a\c\ac3a50613ab9d195656df02ac304157ec7231954
+c
+3src/main/java/ro/pao/mapper/ExampleClassMapper.java,c\3\c3692a8b785373e85cc464de029bc9c673318401
+p
+@src/main/java/ro/pao/repository/impl/SemestruRepositoryImpl.java,2\0\2029a95889098458c32c904c04e9c7e977b2028b

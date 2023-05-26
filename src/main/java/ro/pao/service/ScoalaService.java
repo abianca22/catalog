@@ -1,26 +1,26 @@
-package ro.pao.service;
-
-import lombok.ToString;
-import ro.pao.model.Scoala;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-
-public interface ScoalaService {
-    //Dupa denumire sau adresa
-    public Optional<Scoala> getByAtribut(Object atribut);
-
-    public List<Scoala> listeazaLista();
-
-    public void adaugaScoala(Scoala scoala);
-
-    public void adaugaScoli(List<Scoala> scoli);
-
-    public void stergeScoala(Scoala scoala);
-
-    public void modificaScoala(Scoala deModificat, Scoala inlocuitoare);
-
-    public void sorteazaNume();
-}
+//package ro.pao.service;
+//
+//import lombok.ToString;
+//import ro.pao.model.Scoala;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Optional;
+//import java.util.UUID;
+//
+//
+//public interface ScoalaService {
+//
+//    public Optional<Scoala> getById(UUID id);
+//
+//    public List<Scoala> getAllFromList();
+//
+//    public void adaugaScoala(Scoala scoala);
+//
+//    public void adaugaScoli(List<Scoala> scoli);
+//
+//    public void stergeScoalaDupaId(UUID id);
+//
+//    public void modificaScoalaDupaId(UUID id, Scoala scoala);
+//
+//}
