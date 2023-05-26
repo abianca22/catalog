@@ -1,5 +1,5 @@
 package ro.pao.model;
 
-public interface Rol {
+public sealed interface Rol permits RolElev, RolProfesor{
     String afiseazaRol();
 }
