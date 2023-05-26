@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface SemestruRepository {
-    Optional<Semestru> getSEmestruById(UUID id);
+    Optional<Semestru> getSemestruById(UUID id);
 
     void deleteSemestruById(UUID id);
 
