@@ -14,7 +14,7 @@ public interface ProfesorRepository {
 
     void updateProfById(UUID id, Profesor newProf);
 
-    void addNewProf(Profesor profesor);
+    void addNewProf(Profesor prof);
 
     List<Profesor> getAll();
 
