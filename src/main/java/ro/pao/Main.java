@@ -5,9 +5,9 @@ import ro.pao.model.*;
 import ro.pao.model.enums.Invatare;
 import ro.pao.model.enums.MaterieObligatorie;
 import ro.pao.model.enums.MaterieOptionala;
-import ro.pao.service.ScoalaService;
+//import ro.pao.service.ScoalaService;
 import ro.pao.service.SemestruService;
-import ro.pao.service.impl.ScoalaServiceImpl;
+//import ro.pao.service.impl.ScoalaServiceImpl;
 import ro.pao.service.impl.SemestruServiceImpl;
 
 import java.time.LocalDate;
@@ -18,15 +18,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            Menu menu = Menu.getInstance();
+//        while (true) {
+//            Menu menu = Menu.getInstance();
+//
+//            menu.intro();
+//
+//            if ("exit".equals(scanner.next())) {
+//                break;
+//            }
+//        }
 
-            menu.intro();
+//        Elev elev = new Elev(new RolElev());
+//        elev.printRole();
+//
+//        Profesor prof = new Profesor(new RolProfesor());
+//        prof.printRole();
 
-            if ("exit".equals(scanner.next())) {
-                break;
-            }
-        }
 
 /*
         Catalog catalog = new Catalog();

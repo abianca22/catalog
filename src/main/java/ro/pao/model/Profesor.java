@@ -22,9 +22,18 @@ public class Profesor extends Persoana {
 
         private UUID id;
 
-        Profesor(){
+        public Profesor(Rol rol){
+                super(rol);
+                this.id = UUID.randomUUID();
+        }
+
+        public Profesor(){
                 super();
                 this.id = UUID.randomUUID();
+        }
+
+        public void printRole(){
+                System.out.println(rol.afiseazaRol() + " " + this.toString());
         }
 
 }

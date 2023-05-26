@@ -6,6 +6,7 @@ import ro.pao.model.abstracts.Persoana;
 import ro.pao.model.enums.Invatare;
 
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -31,13 +32,26 @@ public class Elev extends Persoana implements Comparable<Elev>{
         return this.nume.compareTo(o.nume);
     }
 
-    public Elev(){
-        super();
+    public Elev(Rol rol){
+        super(rol);
         this.nume = "";
         this.prenume = "";
+        this.cnp = "";
+        this.dataNastere = null;
         this.nrMatricol = UUID.randomUUID();
         this.stilInvatare = Invatare.NONE;
         this.adresa = new Adresa();
     }
+
+    public Elev(){
+        super();
+        this.adresa = new Adresa();
+        this.nrMatricol = UUID.randomUUID();
+    }
+
+    public void printRole(){
+        System.out.println(rol.afiseazaRol() + " " + this.toString());
+    }
+
 
 }
