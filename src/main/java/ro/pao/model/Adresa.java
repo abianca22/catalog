@@ -18,6 +18,6 @@ public class Adresa {
     private String localitate;
     private String strada;
     private Integer numar;
-    private Optional<Integer> codPostal;
-    private Optional<String> tara;
+    private Integer codPostal;
+    private String tara;
 }
