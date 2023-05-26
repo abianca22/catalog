@@ -12,7 +12,9 @@ public interface ElevRepository {
 
     void deleteElevById(UUID id);
 
-    void updateElevById(UUID id, Elev elevNou);
+    void updateNumeById(UUID id, Elev elevNou);
+
+    void updatePrenumeById(UUID id, Elev elevNou);
 
     void addNewElev(Elev elev);
 
