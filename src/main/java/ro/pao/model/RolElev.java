@@ -1,6 +1,6 @@
 package ro.pao.model;
 
-public class RolElev implements Rol{
+public non-sealed class RolElev implements Rol{
 
     @Override
     public String afiseazaRol(){
