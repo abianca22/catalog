@@ -20,15 +20,15 @@ public class CatalogMapper {
         return INSTANCE;
     }
 
-    public Optional<Catalog> mapToCatalog (ResultSet resultSet, Semestru semestru1, Semestru semestru2) throws SQLException{
+    public Optional<Catalog> mapToCatalog (ResultSet resultSet) throws SQLException{
         if (resultSet.next()) {
             return Optional.of(
                     Catalog.builder()
                             .id(UUID.fromString(resultSet.getString(1)))
                             .clasa(resultSet.getInt(2))
                             .literaClasa(resultSet.getString(3).charAt(0))
-                            .semestru1(semestru1)
-                            .semestru2(semestru2)
+                            .semestru1(new Semestru(UUID.fromString(resultSet.getString(4)), null))
+                            .semestru2(new Semestru(UUID.fromString(resultSet.getString(5)), null))
                             .build()
             );
         }
@@ -37,7 +37,7 @@ public class CatalogMapper {
         }
     }
 
-    public List<Catalog> mapToCatalogList (ResultSet resultSet, Semestru semestru1, Semestru semestru2) throws SQLException{
+    public List<Catalog> mapToCatalogList (ResultSet resultSet) throws SQLException{
         List<Catalog> listaCataloage = new ArrayList<>();
         while (resultSet.next()) {
            listaCataloage.add(
@@ -45,8 +45,8 @@ public class CatalogMapper {
                             .id(UUID.fromString(resultSet.getString(1)))
                             .clasa(resultSet.getInt(2))
                             .literaClasa(resultSet.getString(3).charAt(0))
-                            .semestru1(semestru1)
-                            .semestru2(semestru2)
+                            .semestru1(new Semestru(UUID.fromString(resultSet.getString(4)), null))
+                            .semestru2(new Semestru(UUID.fromString(resultSet.getString(5)), null))
                             .build()
             );
         }
