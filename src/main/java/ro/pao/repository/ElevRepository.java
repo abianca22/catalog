@@ -20,5 +20,4 @@ public interface ElevRepository {
 
     List<Elev> getAll();
 
-    void addAllFromGivenList(List<Elev> listaElevi);
 }

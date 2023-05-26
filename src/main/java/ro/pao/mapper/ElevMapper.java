@@ -40,7 +40,7 @@ public class ElevMapper {
             return Optional.empty();
         }
     }
-    public List<Elev> mapToElevList(ResultSet resultSet, Adresa adresa) throws SQLException {
+    public List<Elev> mapToElevList(ResultSet resultSet) throws SQLException {
         List<Elev> listaElevi = new ArrayList<>();
         while (resultSet.next()) {
             listaElevi.add(
@@ -50,7 +50,13 @@ public class ElevMapper {
                             .prenume(resultSet.getString(3))
                             .cnp(resultSet.getString(4))
                             .dataNastere(resultSet.getDate(5).toLocalDate())
-                            .adresa(adresa)
+                            .adresa(new Adresa(UUID.fromString(resultSet.getString(6)),
+                                    resultSet.getString("judet"),
+                                    resultSet.getString("localitate"),
+                                    resultSet.getString("strada"),
+                                    resultSet.getInt("numar"),
+                                    Optional.of(resultSet.getInt("cod_postal")),
+                                    Optional.of(resultSet.getString("tara"))))
                             .build()
             );
         }
