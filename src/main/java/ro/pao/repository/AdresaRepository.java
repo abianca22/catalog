@@ -12,7 +12,9 @@ public interface AdresaRepository {
 
     void deleteAdresaById(UUID id);
 
-    void updateAdresaById(UUID id, Adresa newAdresa);
+    void updateStradaById(UUID id, Adresa newAdresa);
+
+    void updateNumarById(UUID id, Adresa newAdresa);
 
     void addNewAdresa(Adresa adresa);
 
