@@ -7,10 +7,7 @@ import ro.pao.model.ExampleClass;
 import ro.pao.repository.AdresaRepository;
 
 import javax.xml.transform.Result;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -80,18 +77,36 @@ public class AdresaRepositoryImpl implements AdresaRepository {
 
     @Override
     public void addNewAdresa(Adresa adresa) {
-        String insertSql = "INSERT INTO adresa VALUES (?, ?, ?, ?, ?, ?)";
+        String insertSql = "INSERT INTO adresa VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(insertSql)){
             preparedStatement.setString(1, adresa.getId().toString());
             preparedStatement.setString(2, adresa.getJudet());
-            preparedStatement.setString(3, adresa.getStrada());
-            preparedStatement.setInt(4, adresa.getNumar());
-            preparedStatement.setInt(5, (!adresa.getCodPostal().isPresent()) ? null : adresa.getCodPostal().get());
-            preparedStatement.setString(6, (!adresa.getTara().isPresent()) ? null : adresa.getTara().get());
+            preparedStatement.setString(3, adresa.getLocalitate());
+            if (adresa.getStrada() !=  null) {
+                preparedStatement.setString(4, adresa.getStrada());
+            }
+            else {
+                preparedStatement.setNull(4, Types.VARCHAR, null);
+            }
+            preparedStatement.setInt(5, adresa.getNumar());
+            if (adresa.getCodPostal() != null) {
+                preparedStatement.setInt(6, adresa.getCodPostal());
+            }
+            else {
+                preparedStatement.setNull(6, Types.BIGINT, null);
 
-            preparedStatement.executeUpdate(insertSql);
+            }
+
+            if(adresa.getTara() != null) {
+                preparedStatement.setString(7, adresa.getTara());
+            }
+            else {
+                preparedStatement.setNull(7, Types.VARCHAR, null);
+            }
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
         }

@@ -27,7 +27,7 @@ public class SemestruRepositoryImpl implements SemestruRepository {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            return semestruMapper.mapToSemetru(resultSet);
+            return semestruMapper.mapToSemestru(resultSet);
 
         } catch (SQLException e){
             e.printStackTrace();
@@ -92,12 +92,17 @@ public class SemestruRepositoryImpl implements SemestruRepository {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            return semestruMapper.mapToSemetruList(resultSet);
+            return semestruMapper.mapToSemestruList(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return List.of();
+    }
+
+    @Override
+    public void addAllFromGivenList(List<Semestru> semestre){
+        semestre.forEach(this::addNewSemestru);
     }
 }

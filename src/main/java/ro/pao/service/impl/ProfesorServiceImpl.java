@@ -39,4 +39,9 @@ public class ProfesorServiceImpl implements ProfesorService {
     public List<Profesor> getAll(){
         return profesorRepository.getAll();
     }
+
+    @Override
+    public void addAllFromGivenList(List<Profesor> profesori){
+        profesorRepository.addAllFromGivenList(profesori);
+    }
 }

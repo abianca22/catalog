@@ -18,6 +18,8 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @AllArgsConstructor
+//@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Profesor extends Persoana {
 
         private UUID id;
@@ -36,4 +38,14 @@ public class Profesor extends Persoana {
                 System.out.println(rol.afiseazaRol() + " " + this.toString());
         }
 
+        @Override
+        public String toString() {
+                return "Profesor{" +
+                        "id=" + id +
+                        ", nume='" + nume + '\'' +
+                        ", prenume='" + prenume + '\'' +
+                        ", cnp='" + cnp + '\'' +
+                        ", dataNastere=" + dataNastere +
+                        '}';
+        }
 }

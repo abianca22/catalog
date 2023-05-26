@@ -81,7 +81,7 @@ public class ProfesorRepositoryImpl implements ProfesorRepository{
             preparedStatement.setString(4, profesor.getCnp());
             preparedStatement.setDate(5, Date.valueOf(profesor.getDataNastere()));
 
-            preparedStatement.executeUpdate(insertSql);
+            preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -103,5 +103,8 @@ public class ProfesorRepositoryImpl implements ProfesorRepository{
 
     }
 
-
+    @Override
+    public void addAllFromGivenList(List<Profesor> profesori){
+        profesori.forEach(this::addNewProf);
+    }
 }

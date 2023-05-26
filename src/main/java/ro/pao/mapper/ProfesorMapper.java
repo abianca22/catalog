@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ProfesorMapper {
+public class ProfesorMapper implements Mapper<Profesor> {
     private static final ProfesorMapper INSTANCE = new ProfesorMapper();
 
     private ProfesorMapper(){
@@ -19,7 +19,8 @@ public class ProfesorMapper {
         return INSTANCE;
     }
 
-    public Optional<Profesor> mapToProfesor (ResultSet resultSet) throws SQLException{
+    @Override
+    public Optional<Profesor> mapToObject (ResultSet resultSet) throws SQLException{
         if (resultSet.next()){
             return Optional.of(
                     Profesor.builder()
@@ -36,7 +37,8 @@ public class ProfesorMapper {
         }
     }
 
-    public List<Profesor> mapToProfesorList(ResultSet resultSet) throws SQLException{
+    @Override
+    public List<Profesor> mapToObjectList(ResultSet resultSet) throws SQLException{
         List<Profesor> listaProfesori = new ArrayList<>();
         while(resultSet.next()){
             listaProfesori.add(
@@ -49,5 +51,13 @@ public class ProfesorMapper {
                     .build());
         }
         return listaProfesori;
+    }
+
+    public Optional<Profesor> mapToProfesor(ResultSet resultSet) throws SQLException{
+        return this.mapToProfesor(resultSet);
+    }
+
+    public List<Profesor> mapToProfesorList(ResultSet resultSet) throws SQLException{
+        return this.mapToObjectList(resultSet);
     }
 }

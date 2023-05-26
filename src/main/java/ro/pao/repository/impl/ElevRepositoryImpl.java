@@ -23,24 +23,15 @@ public class ElevRepositoryImpl implements ElevRepository {
 
     @Override
     public Optional<Elev> getElevById(UUID id){
-        String selectSql = "SELECT * FROM elev WHERE nr_matricol=?";
-        String selectAdresa = "SELECT * FROM adresa WHERE id=?";
+        String selectSql = "SELECT * FROM elev e, adresa a WHERE e.id_adresa = a.id";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
-             PreparedStatement preparedStatementAdresa = connection.prepareStatement(selectAdresa)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSql)) {
             preparedStatement.setString(1, id.toString());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            String idAdresa = resultSet.getString(1);
-            preparedStatementAdresa.setString(1, idAdresa);
-
-            ResultSet resultSetAdresa = preparedStatementAdresa.executeQuery();
-
-            Optional<Adresa> adresa = adresaMapper.mapToAdresa(resultSetAdresa);
-
-            return elevMapper.mapToElev(resultSet, (adresa.isPresent()) ? adresa.get() : null);
+            return elevMapper.mapToElev(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -101,13 +92,24 @@ public class ElevRepositoryImpl implements ElevRepository {
             preparedStatement.setString(3, elev.getPrenume());
             preparedStatement.setString(4, elev.getCnp());
             preparedStatement.setDate(5, Date.valueOf(elev.getDataNastere()));
-            preparedStatement.setString(6, elev.getStilInvatare().toString());
+            if (elev.getStilInvatare() != null)
+            {
+                preparedStatement.setString(6, elev.getStilInvatare().toString());
+            }
+            else {
+                preparedStatement.setNull(6, Types.VARCHAR, null);
+            }
             preparedStatement.setString(7, elev.getAdresa().getId().toString());
 
-            preparedStatement.executeUpdate(insertSql);
+            preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void addAllFromGivenList(List<Elev> elevi){
+        elevi.forEach(this::addNewElev);
     }
 
     @Override

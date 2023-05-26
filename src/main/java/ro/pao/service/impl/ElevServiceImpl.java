@@ -45,4 +45,9 @@ public class ElevServiceImpl implements ElevService {
     public void add(Elev elev){
         elevRepository.addNewElev(elev);
     }
+
+    @Override
+    public void addAllFromGivenList(List<Elev> elevi) {
+        elevRepository.addAllFromGivenList(elevi);
+    }
 }

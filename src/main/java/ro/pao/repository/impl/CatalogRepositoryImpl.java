@@ -73,15 +73,15 @@ public class CatalogRepositoryImpl implements CatalogRepository {
 
     @Override
     public void addNewCatalog(Catalog catalog){
-        String insertSql = "INSERT INTO catalog VALUES (?, ?, ?, ?, ?)";
+        String insertSql = "INSERT INTO catalog(id, clasa, id_semestru1, id_semestru2) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertSql)){
 
             preparedStatement.setString(1, catalog.getId().toString());
             preparedStatement.setInt(2, catalog.getClasa());
-            preparedStatement.setString(4, catalog.getSemestru1().getId().toString());
-            preparedStatement.setString(5, catalog.getSemestru2().getId().toString());
+            preparedStatement.setString(3, catalog.getSemestru1().getId().toString());
+            preparedStatement.setString(4, catalog.getSemestru2().getId().toString());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

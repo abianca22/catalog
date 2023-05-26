@@ -8,15 +8,16 @@ import ro.pao.model.enums.Invatare;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 
 @Getter
 @Setter
 @SuperBuilder
-@ToString
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
+//@ToString(callSuper = true)
 public class Elev extends Persoana implements Comparable<Elev>{
     private UUID nrMatricol;
 
@@ -53,5 +54,16 @@ public class Elev extends Persoana implements Comparable<Elev>{
         System.out.println(rol.afiseazaRol() + " " + this.toString());
     }
 
-
+    @Override
+    public String toString() {
+        return "Elev{" +
+                "nrMatricol=" + nrMatricol +
+                ", stilInvatare=" + stilInvatare +
+                ", adresa=" + adresa +
+                ", nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", dataNastere=" + dataNastere +
+                '}';
+    }
 }

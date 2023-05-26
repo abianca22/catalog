@@ -16,4 +16,6 @@ public interface ProfesorService {
     void add(Profesor profesor);
 
     List<Profesor> getAll();
+
+    void addAllFromGivenList(List<Profesor> profesori);
 }

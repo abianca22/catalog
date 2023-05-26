@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class SemestruMapper {
+public class SemestruMapper implements Mapper<Semestru> {
     private static final SemestruMapper INSTANCE = new SemestruMapper();
 
     private SemestruMapper(){
@@ -19,7 +19,8 @@ public class SemestruMapper {
         return INSTANCE;
     }
 
-    public Optional<Semestru> mapToSemetru (ResultSet resultSet) throws SQLException{
+    @Override
+    public Optional<Semestru> mapToObject (ResultSet resultSet) throws SQLException{
         if(resultSet.next()){
             return Optional.of(
                     Semestru.builder()
@@ -32,7 +33,8 @@ public class SemestruMapper {
         }
     }
 
-    public List<Semestru> mapToSemetruList (ResultSet resultSet) throws SQLException{
+    @Override
+    public List<Semestru> mapToObjectList (ResultSet resultSet) throws SQLException{
         List<Semestru> listaSemestre = new ArrayList<>();
         while (resultSet.next()){
              listaSemestre.add(
@@ -42,5 +44,13 @@ public class SemestruMapper {
             );
         }
         return listaSemestre;
+    }
+
+    public Optional<Semestru> mapToSemestru (ResultSet resultSet) throws SQLException{
+        return this.mapToObject(resultSet);
+    }
+
+    public List<Semestru> mapToSemestruList (ResultSet resultSet) throws SQLException{
+        return this.mapToObjectList(resultSet);
     }
 }

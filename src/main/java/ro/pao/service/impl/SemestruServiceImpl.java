@@ -21,7 +21,7 @@ public class SemestruServiceImpl implements SemestruService{
     }
 
     @Override
-    public List<Semestru> getAlFromList(){
+    public List<Semestru> getAllFromList(){
         return semestruRepository.getAll();
     }
 
@@ -38,5 +38,10 @@ public class SemestruServiceImpl implements SemestruService{
     @Override
     public void updateById(UUID id, Semestru semestru){
         semestruRepository.updateSemestruById(id, semestru);
+    }
+
+    @Override
+    public void addAllFromGivenList(List<Semestru> semestre){
+        semestruRepository.addAllFromGivenList(semestre);
     }
 }

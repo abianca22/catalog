@@ -19,4 +19,6 @@ public interface ElevService {
 
     void add(Elev elev);
 
+    void addAllFromGivenList(List<Elev> elevi);
+
 }

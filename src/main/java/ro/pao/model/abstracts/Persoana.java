@@ -2,6 +2,8 @@ package ro.pao.model.abstracts;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import ro.pao.model.Elev;
+import ro.pao.model.Profesor;
 import ro.pao.model.Rol;
 
 import java.time.LocalDate;
@@ -14,7 +16,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @SuperBuilder
 @ToString
-public abstract class Persoana {
+public abstract class Persoana{
 
     protected Rol rol;
 

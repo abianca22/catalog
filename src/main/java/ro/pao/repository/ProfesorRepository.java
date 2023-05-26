@@ -18,4 +18,5 @@ public interface ProfesorRepository {
 
     List<Profesor> getAll();
 
+    void addAllFromGivenList(List<Profesor> profesori);
 }

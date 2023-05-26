@@ -17,4 +17,6 @@ public interface SemestruRepository {
     void addNewSemestru(Semestru semestru);
 
     List<Semestru> getAll();
+
+    void addAllFromGivenList(List<Semestru> semestre);
 }

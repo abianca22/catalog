@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ElevMapper {
+public class ElevMapper implements Mapper<Elev> {
     private static final ElevMapper INSTANCE = new ElevMapper();
 
     private ElevMapper(){
@@ -23,24 +23,8 @@ public class ElevMapper {
     }
 
 
-    public Optional<Elev> mapToElev(ResultSet resultSet, Adresa adresa) throws SQLException{
-        if (resultSet.next()) {
-            return Optional.of(
-                    Elev.builder()
-                            .nrMatricol(UUID.fromString(resultSet.getString(1)))
-                            .nume(resultSet.getString(2))
-                            .prenume(resultSet.getString(3))
-                            .cnp(resultSet.getString((4)))
-                            .dataNastere(resultSet.getDate(5).toLocalDate())
-                            .adresa(adresa)
-                            .build()
-            );
-        }
-        else {
-            return Optional.empty();
-        }
-    }
-    public List<Elev> mapToElevList(ResultSet resultSet) throws SQLException {
+    @Override
+    public List<Elev> mapToObjectList(ResultSet resultSet) throws SQLException {
         List<Elev> listaElevi = new ArrayList<>();
         while (resultSet.next()) {
             listaElevi.add(
@@ -50,18 +34,51 @@ public class ElevMapper {
                             .prenume(resultSet.getString(3))
                             .cnp(resultSet.getString(4))
                             .dataNastere(resultSet.getDate(5).toLocalDate())
-                            .adresa(new Adresa(UUID.fromString(resultSet.getString(6)),
+                            .adresa(new Adresa(UUID.fromString(resultSet.getString("id_adresa")),
                                     resultSet.getString("judet"),
                                     resultSet.getString("localitate"),
                                     resultSet.getString("strada"),
                                     resultSet.getInt("numar"),
-                                    Optional.of(resultSet.getInt("cod_postal")),
-                                    Optional.of(resultSet.getString("tara"))))
+                                    null,
+                                    null))
                             .build()
             );
         }
 
         return listaElevi;
+    }
+
+    @Override
+    public Optional<Elev> mapToObject(ResultSet resultSet) throws SQLException{
+        if (resultSet.next()) {
+            return Optional.of(
+                    Elev.builder()
+                            .nrMatricol(UUID.fromString(resultSet.getString(1)))
+                            .nume(resultSet.getString(2))
+                            .prenume(resultSet.getString(3))
+                            .cnp(resultSet.getString((4)))
+                            .dataNastere(resultSet.getDate(5).toLocalDate())
+                            .adresa(new Adresa(UUID.fromString(resultSet.getString("id_adresa")),
+                                    resultSet.getString("judet"),
+                                    resultSet.getString("localitate"),
+                                    resultSet.getString("strada"),
+                                    resultSet.getInt("numar"),
+                                    null,
+                                    null))
+                            .build()
+            );
+        }
+        else {
+            return Optional.empty();
+        }
+    }
+
+    public Optional<Elev> mapToElev(ResultSet resultSet) throws SQLException{
+        return this.mapToObject(resultSet);
+    }
+
+    public List<Elev> mapToElevList (ResultSet resultSet) throws SQLException{
+        return this.mapToObjectList(resultSet);
     }
 }
 

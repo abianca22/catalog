@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CatalogMapper {
+public class CatalogMapper implements Mapper<Catalog>{
     private static final CatalogMapper INSTANCE = new CatalogMapper();
 
     private CatalogMapper(){
@@ -20,7 +20,8 @@ public class CatalogMapper {
         return INSTANCE;
     }
 
-    public Optional<Catalog> mapToCatalog (ResultSet resultSet) throws SQLException{
+    @Override
+    public Optional<Catalog> mapToObject (ResultSet resultSet) throws SQLException{
         if (resultSet.next()) {
             return Optional.of(
                     Catalog.builder()
@@ -37,19 +38,28 @@ public class CatalogMapper {
         }
     }
 
-    public List<Catalog> mapToCatalogList (ResultSet resultSet) throws SQLException{
+    @Override
+    public List<Catalog> mapToObjectList (ResultSet resultSet) throws SQLException{
         List<Catalog> listaCataloage = new ArrayList<>();
         while (resultSet.next()) {
            listaCataloage.add(
                     Catalog.builder()
                             .id(UUID.fromString(resultSet.getString(1)))
                             .clasa(resultSet.getInt(2))
-                            .literaClasa(resultSet.getString(3).charAt(0))
+                            .literaClasa((resultSet.getString(3) == null) ? null : resultSet.getString(3).charAt(0))
                             .semestru1(new Semestru(UUID.fromString(resultSet.getString(4)), null))
                             .semestru2(new Semestru(UUID.fromString(resultSet.getString(5)), null))
                             .build()
             );
         }
         return listaCataloage;
+    }
+
+    public Optional<Catalog> mapToCatalog(ResultSet resultSet) throws SQLException{
+        return this.mapToObject(resultSet);
+    }
+
+    public List<Catalog> mapToCatalogList(ResultSet resultSet) throws SQLException{
+        return this.mapToObjectList(resultSet);
     }
 }

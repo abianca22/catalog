@@ -11,11 +11,13 @@ import java.util.*;
 public interface SemestruService {
     public Optional<Semestru> getById(UUID id);
 
-    public List<Semestru> getAlFromList();
+    public List<Semestru> getAllFromList();
 
     public void add(Semestru semestru);
 
     public void deleteById(UUID id);
 
     public void updateById(UUID id, Semestru semestru);
+
+    public void addAllFromGivenList(List<Semestru> semestre);
 }

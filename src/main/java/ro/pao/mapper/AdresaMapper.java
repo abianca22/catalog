@@ -3,6 +3,7 @@ package ro.pao.mapper;
 import ro.pao.model.Adresa;
 import ro.pao.model.Profesor;
 
+import java.io.LineNumberInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class AdresaMapper {
+public class AdresaMapper implements Mapper<Adresa> {
     private static final AdresaMapper INSTANCE = new AdresaMapper();
 
     private AdresaMapper(){
@@ -20,7 +21,8 @@ public class AdresaMapper {
         return INSTANCE;
     }
 
-    public Optional<Adresa> mapToAdresa (ResultSet resultSet) throws SQLException {
+    @Override
+    public Optional<Adresa> mapToObject (ResultSet resultSet) throws SQLException {
         if (resultSet.next()){
             return Optional.of(
                    Adresa.builder()
@@ -29,8 +31,8 @@ public class AdresaMapper {
                            .localitate(resultSet.getString(3))
                            .strada(resultSet.getString(4))
                            .numar(resultSet.getInt(5))
-                           .codPostal(Optional.of(resultSet.getInt(6)))
-                           .tara(Optional.of(resultSet.getString(7)))
+                           .codPostal(resultSet.getInt(6))
+                           .tara(resultSet.getString(7))
                            .build()
             );
         }
@@ -39,7 +41,8 @@ public class AdresaMapper {
         }
     }
 
-    public List<Adresa> mapToAdresaList(ResultSet resultSet) throws SQLException{
+    @Override
+    public List<Adresa> mapToObjectList(ResultSet resultSet) throws SQLException{
         List<Adresa> listaAdrese = new ArrayList<>();
         while(resultSet.next()){
             listaAdrese.add(
@@ -49,10 +52,18 @@ public class AdresaMapper {
                             .localitate(resultSet.getString(3))
                             .strada(resultSet.getString(4))
                             .numar(resultSet.getInt(5))
-                            .codPostal(Optional.of(resultSet.getInt(6)))
-                            .tara(Optional.of(resultSet.getString(7)))
+                            .codPostal(resultSet.getInt(6))
+                            .tara(resultSet.getString(7))
                             .build());
         }
         return listaAdrese;
+    }
+
+    public Optional<Adresa> mapToAdresa(ResultSet resultSet) throws SQLException{
+        return this.mapToObject(resultSet);
+    }
+
+    public List<Adresa> mapToAdresaList(ResultSet resultSet) throws SQLException{
+        return this.mapToObjectList(resultSet);
     }
 }
