@@ -6,19 +6,16 @@ import ro.pao.model.Nota;
 import ro.pao.model.Semestru;
 import ro.pao.model.enums.MaterieObligatorie;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public interface SemestruService {
-    public Map<Elev, Integer> numaraAbsente(Semestru semestru);
+    public Optional<Semestru> getById(UUID id);
 
-    public void adaugaElev(Catalog catalog, Elev elev);
+    public List<Semestru> getAlFromList();
 
-    public void stergeElev(Catalog catalog, Elev elev);
+    public void add(Semestru semestru);
 
-    public void adaugaNotaObl(Catalog catalog, Integer semestru, MaterieObligatorie materie, Nota nota, Elev elev);
+    public void deleteById(UUID id);
 
-
-
-    }
+    public void updateById(UUID id, Semestru semestru);
+}
