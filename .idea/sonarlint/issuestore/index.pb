@@ -25,12 +25,8 @@ e
 5src/main/java/ro/pao/application/utils/Constants.java,5\0\50eee973e15778489c48c912472ad141001e1df5
 c
 3src/main/java/ro/pao/application/csv/CsvReader.java,4\8\48327755b9937a6eb78e23ef22aec22372c83bdb
-f
-6src/main/java/ro/pao/threads/ProcessingFileWorker.java,f\6\f61420e89981f7232791a35b1d0f17d29b0f08a6
 b
 2src/main/java/ro/pao/service/ThreadingService.java,4\0\404afe645ec5233742fc7de5e443d6215e4de5b6
-k
-;src/main/java/ro/pao/service/impl/ThreadingServiceImpl.java,b\4\b402e43857092d63d7e05c99ab2b9101033b5c88
 f
 6src/main/java/ro/pao/config/DatabaseConfiguration.java,a\f\afbc55504aab476264d02b051e3ad730a1f60f9c
 h

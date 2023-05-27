@@ -8,6 +8,8 @@ import ro.pao.repository.impl.*;
 import ro.pao.service.*;
 
 import ro.pao.service.impl.*;
+import ro.pao.threads.ThreadDelete;
+import ro.pao.threads.ThreadUpdate;
 
 
 import java.awt.print.PrinterException;
@@ -290,8 +292,21 @@ public class Menu {
         elevi.forEach(e -> System.out.println(e));
 
 
-
-
+//        ThreadUpdate a1 = new ThreadUpdate(2);
+//        ThreadDelete a2 = new ThreadDelete(1);
+//
+//        Thread fir1 = new Thread(a1);
+//        Thread fir2 = new Thread(a2);
+//
+//        fir1.start();
+//        fir2.start();
+//
+//        try {
+//            fir1.join();
+//            fir2.join();
+//        } catch (InterruptedException e){
+//            logger.log(Level.SEVERE, e.getMessage());
+//        }
 
         //
 //        elevService.getAll().forEach(e -> elevService.deleteById(e.getNrMatricol()));
