@@ -1,5 +1,6 @@
 package ro.pao.repository;
 
+import ro.pao.exceptions.IdNotFound;
 import ro.pao.model.Elev;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.UUID;
 
 public interface ElevRepository {
     // dupa numarul matricol
-    Optional<Elev> getElevById(UUID id);
+    Optional<Elev> getElevById(UUID id) throws IdNotFound;
 
     void deleteElevById(UUID id);
 

@@ -2,6 +2,7 @@ package ro.pao.service.impl;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import ro.pao.exceptions.IdNotFound;
 import ro.pao.model.Elev;
 import ro.pao.repository.ElevRepository;
 import ro.pao.service.ElevService;
@@ -17,7 +18,7 @@ public class ElevServiceImpl implements ElevService {
     private final ElevRepository elevRepository;
 
     @Override
-    public Optional<Elev> getById(UUID id){
+    public Optional<Elev> getById(UUID id) throws IdNotFound {
         return elevRepository.getElevById(id);
     }
 
@@ -27,17 +28,17 @@ public class ElevServiceImpl implements ElevService {
     }
 
     @Override
-    public void deleteById(UUID id){
+    public void deleteById(UUID id) throws IdNotFound{
         elevRepository.deleteElevById(id);
     }
 
     @Override
-    public void updateNumeById(UUID id, Elev elev){
+    public void updateNumeById(UUID id, Elev elev) throws IdNotFound{
         elevRepository.updateNumeById(id, elev);
     }
 
     @Override
-    public void updatePrenumeById(UUID id, Elev elev){
+    public void updatePrenumeById(UUID id, Elev elev) throws IdNotFound{
         elevRepository.updatePrenumeById(id, elev);
     }
 

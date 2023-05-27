@@ -1,5 +1,6 @@
 package ro.pao.mapper;
 
+import ro.pao.exceptions.IdNotFound;
 import ro.pao.model.Adresa;
 import ro.pao.model.Elev;
 import ro.pao.model.ExampleClass;
@@ -49,8 +50,10 @@ public class ElevMapper implements Mapper<Elev> {
     }
 
     @Override
-    public Optional<Elev> mapToObject(ResultSet resultSet) throws SQLException{
+    public Optional<Elev> mapToObject(ResultSet resultSet) throws SQLException, IdNotFound {
+        boolean exista = false;
         if (resultSet.next()) {
+            exista = true;
             return Optional.of(
                     Elev.builder()
                             .nrMatricol(UUID.fromString(resultSet.getString(1)))
@@ -68,12 +71,13 @@ public class ElevMapper implements Mapper<Elev> {
                             .build()
             );
         }
-        else {
-            return Optional.empty();
+        if(!exista){
+            throw new IdNotFound("Nu a fost gasit niciun elev cu acest numar matricol!");
         }
+        return Optional.empty();
     }
 
-    public Optional<Elev> mapToElev(ResultSet resultSet) throws SQLException{
+    public Optional<Elev> mapToElev(ResultSet resultSet) throws SQLException, IdNotFound{
         return this.mapToObject(resultSet);
     }
 

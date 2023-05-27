@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class ProfesorMapper implements Mapper<Profesor> {
     private static final ProfesorMapper INSTANCE = new ProfesorMapper();

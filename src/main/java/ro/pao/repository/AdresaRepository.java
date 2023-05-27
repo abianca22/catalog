@@ -1,5 +1,7 @@
 package ro.pao.repository;
 
+import ro.pao.exceptions.IdNotFound;
+import ro.pao.exceptions.NoObject;
 import ro.pao.model.Adresa;
 import ro.pao.model.ExampleClass;
 
@@ -18,7 +20,7 @@ public interface AdresaRepository {
 
     void addNewAdresa(Adresa adresa);
 
-    List<Adresa> getAll();
+    List<Adresa> getAll() throws NoObject;
 
     void addAllFromGivenList(List<Adresa> listaAdrese);
 }

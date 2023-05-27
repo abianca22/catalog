@@ -2,10 +2,17 @@ package ro.pao.service.impl;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import ro.pao.application.csv.CsvWriter;
+import ro.pao.exceptions.IdNotFound;
+import ro.pao.exceptions.NoObject;
 import ro.pao.model.Adresa;
+import ro.pao.model.ExampleClass;
 import ro.pao.repository.AdresaRepository;
 import ro.pao.service.AdresaService;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,22 +24,22 @@ public class AdresaServiceImpl implements AdresaService {
     private final AdresaRepository adresaRepository;
 
     @Override
-    public Optional<Adresa> getById(UUID id){
+    public Optional<Adresa> getById(UUID id) throws IdNotFound {
         return adresaRepository.getAdresaById(id);
     }
 
     @Override
-    public void deleteById(UUID id){
+    public void deleteById(UUID id) throws IdNotFound {
         adresaRepository.deleteAdresaById(id);
     }
 
     @Override
-    public void updateStradaById(UUID id, Adresa adresa){
+    public void updateStradaById(UUID id, Adresa adresa) throws IdNotFound{
         adresaRepository.updateStradaById(id, adresa);
     }
 
     @Override
-    public void updateNumarById(UUID id, Adresa adresa){
+    public void updateNumarById(UUID id, Adresa adresa) throws IdNotFound{
         adresaRepository.updateNumarById(id, adresa);
     }
 
@@ -42,7 +49,7 @@ public class AdresaServiceImpl implements AdresaService {
     }
 
     @Override
-    public List<Adresa> getAll(){
+    public List<Adresa> getAll() throws NoObject {
         return adresaRepository.getAll();
     }
 
@@ -50,4 +57,5 @@ public class AdresaServiceImpl implements AdresaService {
     public void addFromGivenList(List<Adresa> listaAdrese){
         adresaRepository.addAllFromGivenList(listaAdrese);
     }
+
 }

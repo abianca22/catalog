@@ -1,19 +1,23 @@
 package ro.pao.application;
 
+import ro.pao.exceptions.IdNotFound;
+import ro.pao.exceptions.NoObject;
 import ro.pao.model.*;
-import ro.pao.model.enums.Invatare;
-import ro.pao.model.enums.MaterieObligatorie;
+
 import ro.pao.repository.impl.*;
 import ro.pao.service.*;
-//import ro.pao.service.ScoalaService;
-//import ro.pao.service.SemestruService;
-import ro.pao.service.impl.*;
-//import ro.pao.service.impl.ScoalaServiceImpl;
-//import ro.pao.service.impl.SemestruServiceImpl;
 
+import ro.pao.service.impl.*;
+
+
+import java.awt.print.PrinterException;
+import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.file.FileAlreadyExistsException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * In Meniu se fac operatiile care pot lua informatii din toate dintre servicile definite.
@@ -24,6 +28,8 @@ import java.util.*;
 public class Menu {
 
     private static Menu INSTANCE;
+
+    private Logger logger = Logger.getLogger(Menu.class.getName());
 
     private final AdresaService adresaService = new AdresaServiceImpl(new AdresaRepositoryImpl());
 
@@ -46,17 +52,18 @@ public class Menu {
                 Catalog
                 """;
 
+
+
         System.out.println(intro);
 
         System.out.println("ADRESE\n");
 
         System.out.println("Inainte de adaugare: ");
 
-        if (adresaService.getAll().isEmpty()) {
-            System.out.println("Nu exista nicio adresa in baza de date.");
-        }
-        else {
-            adresaService.getAll().forEach(element -> System.out.println(element));
+        try {
+            adresaService.getAll().forEach(a -> System.out.println(a));
+        } catch (NoObject e){
+            logger.log(Level.WARNING, e.getMessage());
         }
 
         Adresa adresa = Adresa.builder()
@@ -75,65 +82,84 @@ public class Menu {
                 .numar(14)
                 .build();
 
-        adresaService.addFromGivenList(List.of(adresa, adresa2));
-
         System.out.println("Dupa adaugare:\n");
 
-        if (adresaService.getAll().isEmpty()) {
-            System.out.println("Nu exista nicio adresa in baza de date.");
-        }
-        else {
-            adresaService.getAll().forEach(element -> System.out.println(element));
+        adresaService.addFromGivenList(List.of(adresa, adresa2));
+
+
+
+        try {
+            adresaService.getAll().forEach(a -> System.out.println(a));
+        } catch (NoObject e){
+            logger.log(Level.WARNING, e.getMessage());
         }
 
 
         System.out.println("ELEVI\n");
 
         System.out.println("Inainte de adaugare:\n");
+        elevService.getAll().forEach(element -> System.out.println(element));
 
-        if(elevService.getAll().isEmpty()){
-            System.out.println("Nu exista niciun elev in baza de date.");
+
+        List<Elev> elevi = new ArrayList<>();
+
+        try {
+            List<Adresa> adrese = adresaService.getAll();
+
+            elevi = List.of(
+                    Elev.builder()
+                            .nrMatricol(UUID.randomUUID())
+                            .nume("Andrei")
+                            .prenume("Bianca")
+                            .cnp("6020322******")
+                            .dataNastere(LocalDate.of(2002, 3, 22))
+                            .adresa(adrese.get(0))
+                            .build(),
+                    Elev.builder()
+                            .nrMatricol(UUID.randomUUID())
+                            .nume("Popescu")
+                            .prenume("Ion")
+                            .cnp("*************")
+                            .dataNastere(LocalDate.of(2006, 2, 2))
+                            .adresa(adrese.get(0))
+                            .build(),
+                    Elev.builder()
+                            .nrMatricol(UUID.randomUUID())
+                            .nume("Popescu")
+                            .prenume("Valentina")
+                            .cnp("*************")
+                            .dataNastere(LocalDate.of(2007, 3, 3))
+                            .adresa(adrese.get(0))
+                            .build()
+            );
+
+            elevService.addAllFromGivenList(elevi);
+
+            System.out.println("Dupa adaugare:\n");
+
+        } catch (NoObject e) {
+            logger.info("Nu exista nicio adresa in baza de date!");
+            logger.log(Level.WARNING, e.getMessage());
         }
-        else {
-            elevService.getAll().forEach(element -> System.out.println(element));
-        }
-
-        List<Adresa> adrese = adresaService.getAll();
-
-        List<Elev> elevi = List.of(
-                Elev.builder()
-                        .nrMatricol(UUID.randomUUID())
-                        .nume("Andrei")
-                        .prenume("Bianca")
-                        .cnp("6020322******")
-                        .dataNastere(LocalDate.of(2002, 3, 22))
-                        .adresa(adrese.get(0))
-                        .build(),
-                Elev.builder()
-                        .nrMatricol(UUID.randomUUID())
-                        .nume("Popescu")
-                        .prenume("Ion")
-                        .cnp("*************")
-                        .dataNastere(LocalDate.of(2006, 2, 2))
-                        .adresa(adrese.get(0))
-                        .build(),
-                Elev.builder()
-                        .nrMatricol(UUID.randomUUID())
-                        .nume("Popescu")
-                        .prenume("Valentina")
-                        .cnp("*************")
-                        .dataNastere(LocalDate.of(2007, 3, 3))
-                        .adresa(adrese.get(0))
-                        .build()
-        );
-
-        elevService.addAllFromGivenList(elevi);
-
-        System.out.println("Dupa adaugare:\n");
 
         elevService.getAll().forEach(element -> System.out.println(element));
 
-        elevService.deleteById(elevi.get(0).getNrMatricol());
+        elevi = elevService.getAll();
+        if(!elevi.isEmpty()) {
+
+            try {
+                elevService.deleteById(elevi.get(0).getNrMatricol());
+
+            } catch (IdNotFound e) {
+                logger.log(Level.WARNING, e.getMessage());
+            }
+
+            try {
+                Optional<Elev> elev = elevService.getById(adresa.getId());
+            } catch (IdNotFound e) {
+                logger.log(Level.WARNING, e.getMessage());
+            }
+        }
 
         elevi = elevService.getAll();
 
@@ -141,13 +167,19 @@ public class Menu {
 
         elevService.getAll().forEach(element -> System.out.println(element));
 
-        elevService.updatePrenumeById(elevi.get(0).getNrMatricol(), Elev.builder()
-                .prenume("Constantin")
-                .build());
+        try {
+            elevService.updatePrenumeById(elevi.get(0).getNrMatricol(), Elev.builder()
+                    .prenume("Constantin")
+                    .build());
 
         System.out.println("Dupa modificarea prenumelui primului elev:\n");
 
         elevService.getAll().forEach(element -> System.out.println(element));
+
+        } catch (IdNotFound e)
+        {
+            logger.log(Level.WARNING, e.getMessage());
+        }
 
 
         //Semestre
@@ -247,11 +279,10 @@ public class Menu {
 
         System.out.println("Lista cataloagelor dupa adaugare:\n");
         catalogService.getAll().forEach(element -> System.out.println(element));
-
-        elevService.getAll().forEach(e -> elevService.deleteById(e.getNrMatricol()));
-        adresaService.getAll().forEach(a -> adresaService.deleteById(a.getId()));
-
-
+//
+//        elevService.getAll().forEach(e -> elevService.deleteById(e.getNrMatricol()));
+//
+//
 
 
 

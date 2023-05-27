@@ -1,5 +1,7 @@
 package ro.pao.mapper;
 
+import ro.pao.exceptions.IdNotFound;
+import ro.pao.exceptions.NoObject;
 import ro.pao.model.Adresa;
 import ro.pao.model.Profesor;
 
@@ -10,10 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AdresaMapper implements Mapper<Adresa> {
     private static final AdresaMapper INSTANCE = new AdresaMapper();
 
+    private Logger logger = Logger.getLogger(AdresaMapper.class.getName());
     private AdresaMapper(){
     }
 
@@ -22,7 +27,7 @@ public class AdresaMapper implements Mapper<Adresa> {
     }
 
     @Override
-    public Optional<Adresa> mapToObject (ResultSet resultSet) throws SQLException {
+    public Optional<Adresa> mapToObject (ResultSet resultSet) throws  SQLException {
         if (resultSet.next()){
             return Optional.of(
                    Adresa.builder()
@@ -36,14 +41,14 @@ public class AdresaMapper implements Mapper<Adresa> {
                            .build()
             );
         }
-        else {
-            return Optional.empty();
-        }
+        return Optional.empty();
     }
 
     @Override
-    public List<Adresa> mapToObjectList(ResultSet resultSet) throws SQLException{
+    public List<Adresa> mapToObjectList(ResultSet resultSet) throws SQLException, NoObject{
         List<Adresa> listaAdrese = new ArrayList<>();
+        int nr = 0;
+
         while(resultSet.next()){
             listaAdrese.add(
                     Adresa.builder()
@@ -55,15 +60,20 @@ public class AdresaMapper implements Mapper<Adresa> {
                             .codPostal(resultSet.getInt(6))
                             .tara(resultSet.getString(7))
                             .build());
+            nr ++;
+        }
+
+        if (nr == 0){
+            throw new NoObject("Cererea nu a returnat niciun rezultat!");
         }
         return listaAdrese;
     }
 
-    public Optional<Adresa> mapToAdresa(ResultSet resultSet) throws SQLException{
-        return this.mapToObject(resultSet);
+    public Optional<Adresa> mapToAdresa(ResultSet resultSet) throws  SQLException{
+        return INSTANCE.mapToObject(resultSet);
     }
 
-    public List<Adresa> mapToAdresaList(ResultSet resultSet) throws SQLException{
-        return this.mapToObjectList(resultSet);
+    public List<Adresa> mapToAdresaList(ResultSet resultSet) throws SQLException, NoObject{
+        return INSTANCE.mapToObjectList(resultSet);
     }
 }

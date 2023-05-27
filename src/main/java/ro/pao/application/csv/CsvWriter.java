@@ -37,7 +37,7 @@ public class CsvWriter {
     }
 
     public String writeAllLines(List<String[]> lines, Path path) throws Exception {
-        try (CSVWriter writer = new CSVWriter(new FileWriter(path.toString()))) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(path.toString(), true))) {
             writer.writeAll(lines);
         }
         return Files.readString(path);

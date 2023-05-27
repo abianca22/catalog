@@ -8,6 +8,10 @@ import ro.pao.model.enums.MaterieOptionala;
 import ro.pao.service.SemestruService;
 import ro.pao.service.impl.SemestruServiceImpl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -15,6 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
 
         while (true) {
             Menu menu = Menu.getInstance();
