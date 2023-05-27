@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class SemestruMapper implements Mapper<Semestru> {
+public class SemestruMapper extends MapperTemplate<Semestru> {
     private static final SemestruMapper INSTANCE = new SemestruMapper();
 
     private SemestruMapper(){

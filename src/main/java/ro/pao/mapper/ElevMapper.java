@@ -3,8 +3,6 @@ package ro.pao.mapper;
 import ro.pao.exceptions.IdNotFound;
 import ro.pao.model.Adresa;
 import ro.pao.model.Elev;
-import ro.pao.model.ExampleClass;
-import ro.pao.model.enums.EnumExample;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ElevMapper implements Mapper<Elev> {
+public class ElevMapper extends MapperTemplate<Elev> {
     private static final ElevMapper INSTANCE = new ElevMapper();
 
     private ElevMapper(){

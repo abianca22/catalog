@@ -1,21 +1,17 @@
 package ro.pao.mapper;
 
-import ro.pao.exceptions.IdNotFound;
 import ro.pao.exceptions.NoObject;
 import ro.pao.model.Adresa;
-import ro.pao.model.Profesor;
 
-import java.io.LineNumberInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AdresaMapper implements Mapper<Adresa> {
+public class AdresaMapper extends MapperTemplate<Adresa> {
     private static final AdresaMapper INSTANCE = new AdresaMapper();
 
     private Logger logger = Logger.getLogger(AdresaMapper.class.getName());

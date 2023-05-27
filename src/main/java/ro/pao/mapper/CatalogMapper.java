@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CatalogMapper implements Mapper<Catalog>{
+public class CatalogMapper extends MapperTemplate<Catalog> {
     private static final CatalogMapper INSTANCE = new CatalogMapper();
 
     private CatalogMapper(){
