@@ -25,8 +25,6 @@ e
 5src/main/java/ro/pao/application/utils/Constants.java,5\0\50eee973e15778489c48c912472ad141001e1df5
 c
 3src/main/java/ro/pao/application/csv/CsvReader.java,4\8\48327755b9937a6eb78e23ef22aec22372c83bdb
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 f
 6src/main/java/ro/pao/threads/ProcessingFileWorker.java,f\6\f61420e89981f7232791a35b1d0f17d29b0f08a6
 b

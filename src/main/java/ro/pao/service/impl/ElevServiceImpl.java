@@ -28,17 +28,17 @@ public class ElevServiceImpl implements ElevService {
     }
 
     @Override
-    public void deleteById(UUID id) throws IdNotFound{
+    public void deleteById(UUID id){
         elevRepository.deleteElevById(id);
     }
 
     @Override
-    public void updateNumeById(UUID id, Elev elev) throws IdNotFound{
+    public void updateNumeById(UUID id, Elev elev){
         elevRepository.updateNumeById(id, elev);
     }
 
     @Override
-    public void updatePrenumeById(UUID id, Elev elev) throws IdNotFound{
+    public void updatePrenumeById(UUID id, Elev elev){
         elevRepository.updatePrenumeById(id, elev);
     }
 

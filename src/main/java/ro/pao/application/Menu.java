@@ -147,12 +147,7 @@ public class Menu {
         elevi = elevService.getAll();
         if(!elevi.isEmpty()) {
 
-            try {
-                elevService.deleteById(elevi.get(0).getNrMatricol());
-
-            } catch (IdNotFound e) {
-                logger.log(Level.WARNING, e.getMessage());
-            }
+            elevService.deleteById(elevi.get(0).getNrMatricol());
 
             try {
                 Optional<Elev> elev = elevService.getById(adresa.getId());
@@ -167,19 +162,14 @@ public class Menu {
 
         elevService.getAll().forEach(element -> System.out.println(element));
 
-        try {
-            elevService.updatePrenumeById(elevi.get(0).getNrMatricol(), Elev.builder()
+
+        elevService.updatePrenumeById(elevi.get(0).getNrMatricol(), Elev.builder()
                     .prenume("Constantin")
                     .build());
 
         System.out.println("Dupa modificarea prenumelui primului elev:\n");
 
         elevService.getAll().forEach(element -> System.out.println(element));
-
-        } catch (IdNotFound e)
-        {
-            logger.log(Level.WARNING, e.getMessage());
-        }
 
 
         //Semestre
@@ -279,7 +269,31 @@ public class Menu {
 
         System.out.println("Lista cataloagelor dupa adaugare:\n");
         catalogService.getAll().forEach(element -> System.out.println(element));
-//
+
+        elevi = elevService.getAll();
+
+        System.out.println("Inainte de eliminare prin iterator:\n");
+        elevi.forEach(e -> System.out.println(e));
+
+        Iterator<Elev> it = elevi.iterator();
+
+        while(it.hasNext()){
+            Elev elev = it.next();
+            if (elev.getNume().equals("Popescu")){
+
+                elevService.deleteById(elev.getNrMatricol());
+                it.remove();
+            }
+        }
+
+        System.out.println("Dupa eliminarea elevului cu numele Popescu prin iterator:\n");
+        elevi.forEach(e -> System.out.println(e));
+
+
+
+
+
+        //
 //        elevService.getAll().forEach(e -> elevService.deleteById(e.getNrMatricol()));
 //
 //

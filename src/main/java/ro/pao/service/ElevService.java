@@ -12,11 +12,11 @@ public interface ElevService {
 
     List<Elev> getAll();
 
-    void deleteById(UUID id) throws IdNotFound;
+    void deleteById(UUID id);
 
-    void updateNumeById(UUID id, Elev elev) throws IdNotFound;
+    void updateNumeById(UUID id, Elev elev);
 
-    void updatePrenumeById(UUID id, Elev elev) throws IdNotFound;
+    void updatePrenumeById(UUID id, Elev elev);
 
     void add(Elev elev);
 
