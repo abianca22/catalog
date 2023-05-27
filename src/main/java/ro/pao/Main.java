@@ -1,6 +1,7 @@
 package ro.pao;
 
 import ro.pao.application.Menu;
+import ro.pao.gateways.Requests;
 import ro.pao.model.*;
 import ro.pao.model.enums.Invatare;
 import ro.pao.model.enums.MaterieObligatorie;
@@ -18,8 +19,11 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
+        Requests requests = new Requests();
+        requests.saveRequestInfo();
+
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             Menu menu = Menu.getInstance();
