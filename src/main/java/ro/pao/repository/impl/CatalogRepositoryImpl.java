@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -59,7 +60,7 @@ public class CatalogRepositoryImpl implements CatalogRepository {
             logger.info("Au fost sterse " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost sterse " + nr + " linii din catalog."});
+            lines.add(new String[]{LocalDate.now().toString(), "delete", "catalog"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -86,7 +87,7 @@ public class CatalogRepositoryImpl implements CatalogRepository {
             int nr = preparedStatement.executeUpdate();
             logger.info("Au fost actualizate " + nr + " linii.");
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost actualizate " + nr + " linii in catalog."});
+            lines.add(new String[]{LocalDate.now().toString(), "update", "catalog"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -115,8 +116,7 @@ public class CatalogRepositoryImpl implements CatalogRepository {
             logger.info("Au fost inserate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost inserate " + nr + " linii in catalog."});
-
+            lines.add(new String[]{LocalDate.now().toString(), "insert", "catalog"});
             Path path = Path.of("audit.csv");
             try {
                 writeToCsv(lines, path);

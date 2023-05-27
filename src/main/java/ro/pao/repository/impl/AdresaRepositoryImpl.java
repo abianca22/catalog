@@ -10,6 +10,7 @@ import ro.pao.repository.AdresaRepository;
 import java.io.File;
 import java.nio.file.Path;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,7 @@ public class AdresaRepositoryImpl implements AdresaRepository {
 
             AdresaRepositoryImpl temporar = new AdresaRepositoryImpl();
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost sterse " + nr + " linii din adresa."});
+            lines.add(new String[]{LocalDate.now().toString(), "delete", "adresa"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -77,7 +78,7 @@ public class AdresaRepositoryImpl implements AdresaRepository {
             logger.info("Au fost actualizate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost actualizate " + nr + " linii in adresa."});
+            lines.add(new String[]{LocalDate.now().toString(), "update", "adresa"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -105,7 +106,7 @@ public class AdresaRepositoryImpl implements AdresaRepository {
             logger.info("Au fost actualizate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost actualizate " + nr + " linii in adresa."});
+            lines.add(new String[]{LocalDate.now().toString(), "update", "adresa"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -154,7 +155,8 @@ public class AdresaRepositoryImpl implements AdresaRepository {
             int nr = preparedStatement.executeUpdate();
             logger.info("Au fost inserate " + nr + " linii.");
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost inserate " + nr + " linii in adresa"});
+
+            lines.add(new String[]{LocalDate.now().toString(), "insert", "adresa"});
 
             Path path = Path.of("audit.csv");
             try {

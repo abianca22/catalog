@@ -5,10 +5,13 @@ import ro.pao.mapper.SemestruMapper;
 import ro.pao.model.Semestru;
 import ro.pao.repository.SemestruRepository;
 
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -77,6 +80,7 @@ public class SemestruRepositoryImpl implements SemestruRepository {
 
             preparedStatement.setString(1, semestru.getId().toString());
             preparedStatement.executeUpdate();
+
 
         } catch (SQLException e) {
             e.printStackTrace();

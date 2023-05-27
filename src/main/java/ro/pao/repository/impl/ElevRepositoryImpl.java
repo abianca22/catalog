@@ -15,6 +15,7 @@ import javax.xml.transform.Result;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +59,7 @@ public class ElevRepositoryImpl implements ElevRepository {
             logger.info("Au fost sterse " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost sterse " + nr + " linii din elev."});
+            lines.add(new String[]{LocalDate.now().toString(), "delete", "elev"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -84,7 +85,7 @@ public class ElevRepositoryImpl implements ElevRepository {
             logger.info("Au fost actualizate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost actualizate " + nr + " linii in elev."});
+            lines.add(new String[]{LocalDate.now().toString(), "update", "elev"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -111,7 +112,7 @@ public class ElevRepositoryImpl implements ElevRepository {
             logger.info("Au fost actualizate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost actualizate " + nr + " linii in elev."});
+            lines.add(new String[]{LocalDate.now().toString(), "update", "elev"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -149,7 +150,7 @@ public class ElevRepositoryImpl implements ElevRepository {
             logger.info("Au fost inserate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost inserate " + nr + " linii in elev."});
+            lines.add(new String[]{LocalDate.now().toString(), "insert", "elev"});
 
             Path path = Path.of("audit.csv");
             try {

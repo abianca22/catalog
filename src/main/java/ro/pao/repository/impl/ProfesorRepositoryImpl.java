@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +59,8 @@ public class ProfesorRepositoryImpl implements ProfesorRepository{
             logger.info("Au fost sterse " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost sterse " + nr + " linii din profesor."});
+
+            lines.add(new String[]{LocalDate.now().toString(), "delete", "profesor"});
 
             Path path = Path.of("audit.csv");
             try {
@@ -85,7 +87,8 @@ public class ProfesorRepositoryImpl implements ProfesorRepository{
             logger.info("Au fost actualizate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost actualizate " + nr + " linii in profesor."});
+            lines.add(new String[]{LocalDate.now().toString(), "update", "profesor"});
+
             Path path = Path.of("audit.csv");
             try {
                 writeToCsv(lines, path);
@@ -116,7 +119,8 @@ public class ProfesorRepositoryImpl implements ProfesorRepository{
             logger.info("Au fost inserate " + nr + " linii.");
 
             List<String[]> lines = new ArrayList<>();
-            lines.add(new String[]{"Au fost inserate " + nr + " linii in profesor."});
+            lines.add(new String[]{LocalDate.now().toString(), "insert", "profesor"});
+
 
             Path path = Path.of("audit.csv");
             try {
